@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What's New: Batch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest:      #2C3A1E;
+  --forest-deep: #1E2914;
+  --matcha:      #7CC96E;
+  --matcha-deep: #3E8F38;
+  --moss:        #5A6B45;
+  --moss-faint:  #8A9A72;
+  --lime:        #CDEB6A;
+  --cream:       #FBFBF4;
+  --sage-bg:     #E7EEDD;
+  --sage-100:    #DCEACF;
+  --card-line:   rgba(44,58,30,.08);
+  --f: 'Merriweather', Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f);
+  background: var(--cream);
+  color: var(--forest);
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(30,41,20,.96);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 11px;
+  text-decoration: none; color: var(--cream);
+}
+.nav-logo-name { font-size: 18px; font-weight: 700; letter-spacing: -.01em; color: var(--cream); }
+.btn-ghost {
+  font-family: var(--f); font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.6); background: none; border: none;
+  cursor: pointer; text-decoration: none; transition: color .15s;
+}
+.btn-ghost:hover { color: #fff; }
+
+.page-hero {
+  background: var(--forest-deep);
+  padding: 120px 48px 64px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.page-hero-inner { max-width: 860px; margin: 0 auto; }
+.page-kicker {
+  font-size: 11px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--moss-faint); margin-bottom: 16px;
+}
+.page-h1 {
+  font-size: clamp(32px, 4vw, 52px); font-weight: 900; line-height: 1.1;
+  color: #fff; letter-spacing: -.02em;
+}
+.page-h1 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,.55); }
+.page-sub {
+  margin-top: 16px; font-size: 16px; font-weight: 300; line-height: 1.7;
+  color: rgba(255,255,255,.5); max-width: 520px;
+}
+
+.features-wrap {
+  max-width: 860px; margin: 0 auto;
+  padding: 72px 48px 96px;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 24px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--card-line);
+}
+.feature:first-child { padding-top: 0; }
+.feature:last-child { border-bottom: none; }
+
+.feat-icon-wrap {
+  width: 52px; height: 52px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+}
+.feat-icon-wrap.sage { background: var(--sage-100); }
+.feat-icon-wrap.dark { background: var(--forest); }
+.feat-icon-wrap.green { background: var(--matcha-deep); }
+
+.feat-body { padding-top: 10px; }
+.feat-h3 {
+  font-size: 18px; font-weight: 700; color: var(--forest);
+  letter-spacing: -.01em; margin-bottom: 10px; line-height: 1.25;
+}
+.feat-p {
+  font-size: 14.5px; font-weight: 300; line-height: 1.8;
+  color: var(--moss); text-wrap: pretty; max-width: 600px;
+}
+
+footer {
+  background: var(--forest-deep);
+  padding: 40px 48px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-inner {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,.25); font-family: var(--f); }
+.footer-links { display: flex; gap: 20px; list-style: none; }
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,.35);
+  text-decoration: none; font-family: var(--f); transition: color .15s;
+}
+.footer-links a:hover { color: rgba(255,255,255,.7); }
+
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .page-hero { padding: 100px 20px 48px; }
+  .features-wrap { padding: 48px 20px 72px; }
+  footer { padding: 32px 20px; }
+  .feature { grid-template-columns: 1fr; }
+  .feat-icon-wrap { margin-bottom: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg viewBox="0 0 200 200" width="26" height="26" fill="none">
+      <path d="M46 21 H25 V61 Q25 87 51 87 H149 Q175 87 175 61 V21 H154"
+        stroke="#FBFBF4" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="61" y="13" width="78" height="22" rx="11" fill="#FBFBF4"/>
+      <path d="M46 116 H25 V156 Q25 182 51 182 H149 Q175 182 175 156 V116 H154"
+        stroke="rgba(251,251,244,.4)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="61" y="108" width="78" height="22" rx="11" fill="rgba(251,251,244,.4)"/>
+    </svg>
+    <span class="nav-logo-name">Batch</span>
+  </a>
+  <a class="btn-ghost" href="mailto:avotin28@gmail.com">Support</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-kicker">Features</div>
+    <h1 class="page-h1">Everything in Batch.<br><em>Nothing you don't need.</em></h1>
+    <p class="page-sub">A quick tour of what the app can do.</p>
+  </div>
+</div>
+
+<div class="features-wrap">
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">🗓️</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Prep cycles</h3>
+      <p class="feat-p">Create a batch for however long your shop covers. Could be three days, could be two weeks. Batch figures out your daily calorie budget based on what you cooked and how many days it needs to last.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap dark">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="3" width="18" height="4" rx="2" fill="#CDEB6A"/>
+        <rect x="3" y="10" width="14" height="4" rx="2" fill="rgba(205,235,106,.5)"/>
+        <rect x="3" y="17" width="9" height="4" rx="2" fill="rgba(205,235,106,.25)"/>
+      </svg>
+    </div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Calorie budget</h3>
+      <p class="feat-p">Set a daily calorie goal and see it as a live budget. Meal prep, pantry staples, and extras each show their contribution so you always know where you stand.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap green">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 7h18M3 12h18M3 17h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Macros</h3>
+      <p class="feat-p">Track protein, carbs, and fat alongside calories. Set your own targets for each. Batch shows your progress across the whole prep and breaks it down per item.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">📷</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Barcode scanning</h3>
+      <p class="feat-p">Point your camera at a barcode and Batch looks up the nutrition info instantly. It checks Open Food Facts and USDA FoodData Central. If a product isn't found, you can add it manually and it gets saved for next time.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">🧾</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Receipt scanning</h3>
+      <p class="feat-p">Photograph your supermarket receipt and Batch reads the items, estimates the calories, and adds them in one go. Useful when you've bought a lot and don't want to scan each item individually.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">🫙</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Pantry staples</h3>
+      <p class="feat-p">Things you cook with every day like olive oil, oats, or rice. Add them once and Batch automatically includes them in every prep's calorie count based on your typical daily amount.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">🍽️</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Extra meals</h3>
+      <p class="feat-p">Ate out or grabbed something that wasn't part of the prep? Log it as a quick extra on any day. Batch folds it into the budget so your numbers stay accurate.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">↩️</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Carry-over leftovers</h3>
+      <p class="feat-p">When you start a new prep, Batch can roll leftover food from the previous one into it. Choose what to carry over and how much is left, and it adjusts the calorie count accordingly.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap green">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="#fff" stroke-width="2"/>
+        <path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="feat-body">
+      <h3 class="feat-h3">Cloud sync</h3>
+      <p class="feat-p">Create an account and your data syncs across devices. Everything works offline too. Sign in on a second phone or after reinstalling and your preps are all there.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feat-icon-wrap sage">🍎</div>
+    <div class="feat-body">
+      <h3 class="feat-h3">My foods</h3>
+      <p class="feat-p">Items you scan or add manually get saved to your personal food library. Next time you search for them they appear instantly, no barcode needed.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Batch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
