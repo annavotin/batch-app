@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Confirm your email: Batch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest:     #2C3A1E;
+  --matcha:     #7CC96E;
+  --moss-faint: #8A9A72;
+  --cream:      #FBFBF4;
+  --f: 'Hanken Grotesk', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--f);
+  background: var(--cream);
+  color: var(--forest);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+.card { max-width: 380px; }
+.emoji { font-size: 48px; margin-bottom: 16px; }
+h1 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+p { font-size: 15px; font-weight: 600; color: var(--moss-faint); line-height: 1.5; margin-bottom: 24px; }
+.btn {
+  display: inline-block;
+  background: var(--matcha);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 15px 32px;
+  border-radius: 14px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="emoji">🧺</div>
+  <h1 id="title">Opening Batch...</h1>
+  <p id="desc">If the app does not open automatically, tap the button below.</p>
+  <a class="btn" id="open" href="#">Open Batch</a>
+</div>
+<script>
+  // Supabase redirects here after verifying the email, appending the auth params
+  // (e.g. ?code=... for the PKCE flow, or ?error=... on failure). Forward the full
+  // query string on to the app's deep-link handler, which exchanges it for a session.
+  (function () {
+    var qs = window.location.search || '';
+    var target = 'batch://auth-callback' + qs;
+    var params = new URLSearchParams(qs);
+
+    if (params.get('error')) {
+      document.getElementById('title').textContent = 'Confirmation failed';
+      document.getElementById('desc').textContent =
+        params.get('error_description') || 'This link is invalid or has expired. Try signing up again.';
+      document.getElementById('open').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('open').setAttribute('href', target);
+    // Attempt to open the app automatically.
+    window.location.href = target;
+  })();
+</script>
+</body>
+</html>
