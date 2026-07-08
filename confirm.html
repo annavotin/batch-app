@@ -46,14 +46,18 @@ p { font-size: 15px; font-weight: 600; color: var(--moss-faint); line-height: 1.
 <body>
 <div class="card">
   <div class="emoji">🧺</div>
-  <h1 id="title">Opening Batch...</h1>
-  <p id="desc">If the app does not open automatically, tap the button below.</p>
+  <h1 id="title">Email confirmed</h1>
+  <p id="desc">Tap the button to finish signing in to Batch.</p>
   <a class="btn" id="open" href="#">Open Batch</a>
 </div>
 <script>
   // Supabase redirects here after verifying the email, appending the auth params
-  // (e.g. ?code=... for the PKCE flow, or ?error=... on failure). Forward the full
-  // query string on to the app's deep-link handler, which exchanges it for a session.
+  // (e.g. ?code=... for the PKCE flow, or ?error=... on failure). We hand the full
+  // query string to the app's deep-link handler, which exchanges it for a session.
+  //
+  // iOS Safari blocks *programmatic* navigation to a custom scheme (it shows "address
+  // is invalid"), but allows it from a user tap. So we set the button's href and let
+  // the user tap it, rather than auto-redirecting.
   (function () {
     var qs = window.location.search || '';
     var target = 'batch://auth-callback' + qs;
@@ -68,8 +72,6 @@ p { font-size: 15px; font-weight: 600; color: var(--moss-faint); line-height: 1.
     }
 
     document.getElementById('open').setAttribute('href', target);
-    // Attempt to open the app automatically.
-    window.location.href = target;
   })();
 </script>
 </body>
