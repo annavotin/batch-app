@@ -158,7 +158,7 @@ footer {
   <div class="page-hero-inner">
     <div class="page-kicker">Legal</div>
     <h1 class="page-h1">Privacy Policy</h1>
-    <p class="page-meta">Last updated: June 25, 2026</p>
+    <p class="page-meta">Last updated: July 20, 2026</p>
   </div>
 </div>
 
@@ -199,12 +199,16 @@ footer {
   </ul>
   <p>We do not access your contacts, location, microphone, or any other device data.</p>
 
+  <h3>Usage analytics and error diagnostics</h3>
+  <p>To understand how Batch is used and to find and fix bugs, we collect anonymous product analytics through <strong>PostHog</strong>. This includes which screens you view, which features you tap, when the app is opened, and a few key actions (completing onboarding, creating a meal prep cycle, adding an item, logging an extra meal, and scanning a receipt). We also capture app error reports so we can diagnose crashes. These events do not include the food, weight, or calorie details you enter.</p>
+  <p>This data is tied to a random, app-generated identifier by default. If you are signed in, it is associated with your account email so we can understand issues across your devices. PostHog also records basic technical details such as your device model, operating system version, app version, and language setting. We do not collect your location or advertising identifiers.</p>
+  <p>You can turn this off at any time from <strong>Settings, then Privacy, then "Share anonymous usage data."</strong> When it is off, no further analytics or error events are sent from your device.</p>
+
   <h2>What we do not collect</h2>
   <ul>
     <li>Location data</li>
-    <li>Device identifiers or advertising IDs</li>
-    <li>Browsing or usage analytics</li>
-    <li>Crash reports sent to third-party analytics services</li>
+    <li>Advertising identifiers (such as IDFA) or cross-app tracking</li>
+    <li>The contents of your meals, weights, or calorie entries in analytics events</li>
     <li>Any data from contacts, calendar, or other apps</li>
   </ul>
 
@@ -237,6 +241,11 @@ footer {
         <td><strong>Anthropic</strong> (anthropic.com)</td>
         <td>Receipt image parsing</td>
         <td>Receipt image (not stored by Anthropic per their API policy)</td>
+      </tr>
+      <tr>
+        <td><strong>PostHog</strong> (posthog.com)</td>
+        <td>Product usage analytics and error diagnostics</td>
+        <td>Anonymous usage events, device and app metadata, account email when signed in</td>
       </tr>
     </tbody>
   </table>
